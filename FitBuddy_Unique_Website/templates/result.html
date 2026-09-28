@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Your Pulse Plan — FitBuddy{% endblock %}
+{% block content %}
+<section class="result-shell">
+  <div class="result-top">
+    <div>
+      <div class="eyebrow">YOUR PERSONAL PULSE</div>
+      <h1>{{ user.name }}'s <span>7-day plan</span></h1>
+      <p class="muted">Goal: {{ user.goal.title() }} · Intensity: {{ user.intensity.title() }} · ID: {{ user.user_id }}</p>
+    </div>
+    <div class="source-pill">{{ source }} powered</div>
+  </div>
+
+  {% if updated %}
+  <div class="notice">✓ Plan updated from your feedback. Your revised version is shown below.</div>
+  {% endif %}
+
+  <div class="result-grid">
+    <section class="panel plan-card">
+      <div class="panel-head"><div><span class="step">02</span><div><h2>{{ "Updated plan" if updated else "Your weekly rhythm" }}</h2><p>Day-by-day movement ideas</p></div></div></div>
+      <pre class="plan-text">{{ plan }}</pre>
+    </section>
+
+    <aside class="side-stack">
+      <section class="panel tip-card">
+        <div class="tip-icon">✦</div>
+        <div class="eyebrow">RECOVERY / NUTRITION</div>
+        <h2>One useful tip</h2>
+        <p>{{ tip }}</p>
+        <small>{{ tip_source }} source</small>
+      </section>
+
+      <section class="panel feedback-card">
+        <div class="eyebrow">03 · REFINE</div>
+        <h2>Make it fit you</h2>
+        <p>Tell the AI what you'd like changed, such as more cardio, extra recovery, or a different training split.</p>
+        <form action="/submit-feedback" method="post" onsubmit="showLoading(this)">
+          <input type="hidden" name="user_id" value="{{ user.user_id }}">
+          <textarea name="feedback" required maxlength="1000" placeholder="Example: I'd like more recovery days and shorter sessions."></textarea>
+          <button class="secondary-btn" type="submit">Update plan →</button>
+        </form>
+      </section>
+    </aside>
+  </div>
+
+  <a class="back-link" href="/">← Create another plan</a>
+</section>
+{% endblock %}

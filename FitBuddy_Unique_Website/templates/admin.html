@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Coach View — FitBuddy{% endblock %}
+{% block content %}
+<section class="admin-shell">
+  <div class="result-top">
+    <div><div class="eyebrow">04 · COACH VIEW</div><h1>Plan <span>activity</span></h1><p class="muted">Local records stored by FitBuddy Pulse.</p></div>
+    <div class="source-pill">{{ users|length }} profiles</div>
+  </div>
+
+  {% if users %}
+  <div class="user-list">
+    {% for u in users %}
+    <article class="panel user-card">
+      <div class="user-summary">
+        <div class="avatar">{{ u.name[:1]|upper }}</div>
+        <div><h2>{{ u.name }}</h2><p>{{ u.user_id }} · {{ u.goal.title() }} · {{ u.intensity.title() }}</p></div>
+        <form method="post" action="/admin/delete/{{ u.id }}" onsubmit="return confirm('Delete this profile?')"><button class="ghost-danger">Delete</button></form>
+      </div>
+      <div class="meta-row"><span>Age {{ u.age }}</span><span>Weight {{ u.weight }}</span><span>Created {{ u.created_at.strftime('%d %b %Y') if u.created_at else '—' }}</span></div>
+      <details><summary>View original plan</summary><pre class="plan-text compact">{{ u.original_plan }}</pre></details>
+      {% if u.updated_plan %}
+      <details><summary>View updated plan</summary><pre class="plan-text compact">{{ u.updated_plan }}</pre></details>
+      <div class="feedback-line"><b>Feedback:</b> {{ u.feedback }}</div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty panel"><div>✦</div><h2>No profiles yet</h2><p>Generate your first plan to populate the coach view.</p><a class="secondary-btn inline-btn" href="/">Open generator</a></div>
+  {% endif %}
+</section>
+{% endblock %}

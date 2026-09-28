@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy Pulse — Build your week{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">AI FITNESS PLANNER · PULSE EDITION</div>
+    <h1>Make your week<br><span>move better.</span></h1>
+    <p class="hero-text">Create a flexible 7-day routine with AI-powered workout ideas, recovery guidance, and a plan you can refine with feedback.</p>
+    <div class="mini-stats">
+      <div><b>07</b><span>day plan</span></div>
+      <div><b>AI</b><span>adaptive ideas</span></div>
+      <div><b>01</b><span>simple flow</span></div>
+    </div>
+  </div>
+
+  <div class="panel form-panel">
+    <div class="panel-head">
+      <div><span class="step">01</span><div><h2>Your starting point</h2><p>Tell us what your week should feel like.</p></div></div>
+      <span class="live-dot">● LIVE</span>
+    </div>
+    <form action="/generate-workout" method="post" onsubmit="showLoading(this)">
+      <div class="field-grid">
+        <label>Full name<input name="name" required placeholder="e.g. Alex"></label>
+        <label>User ID<input name="user_id" required placeholder="e.g. FB-1024"></label>
+        <label>Age<input type="number" name="age" min="13" max="100" required placeholder="18"></label>
+        <label>Weight<input name="weight" required placeholder="e.g. 65 kg"></label>
+      </div>
+      <label>Primary goal
+        <select name="goal" required>
+          <option value="general wellness">General wellness</option>
+          <option value="weight loss">Weight loss</option>
+          <option value="muscle gain">Muscle gain</option>
+          <option value="flexibility">Flexibility</option>
+        </select>
+      </label>
+      <div class="intensity-wrap">
+        <span>Workout intensity</span>
+        <div class="segmented">
+          <label><input type="radio" name="intensity" value="low" required><span>Low</span></label>
+          <label><input type="radio" name="intensity" value="medium" checked><span>Medium</span></label>
+          <label><input type="radio" name="intensity" value="high"><span>High</span></label>
+        </div>
+      </div>
+      <button class="primary-btn" type="submit"><span>Generate my week</span><b>→</b></button>
+      <p class="micro-note">AI output is general wellness guidance. Adapt activities to your ability.</p>
+    </form>
+  </div>
+</section>
+
+<section class="feature-row">
+  <article><span>✦</span><h3>Personalized</h3><p>Goal and intensity shape the generated routine.</p></article>
+  <article><span>↻</span><h3>Refinable</h3><p>Send feedback and regenerate your plan.</p></article>
+  <article><span>⌁</span><h3>Persistent</h3><p>Plans are stored locally with SQLite.</p></article>
+</section>
+{% endblock %}
