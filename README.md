@@ -60,4 +60,4 @@ GOOGLE_API_KEY=AQ.Ab8RN6KYS--CAJlqkh66gfDQXcOujN92lRXkVpxuRsgfpzpsIQ
 The app tries Gemini when a key is available. If it cannot call Gemini, it uses a clearly labeled local demo generator so the UI can still be tested.
 
 ## Demo Video
-https://drive.google.com/file/d/14VsJYG8q9sNzQmzCCUqW9ZVaryoMSAk_/view?usp=sharing
+(https://drive.google.com/file/d/14VsJYG8q9sNzQmzCCUqW9ZVaryoMSAk_/view?usp=sharing)
