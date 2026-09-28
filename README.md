@@ -54,7 +54,7 @@ Open:
 Put your key in `.env`:
 
 ```env
-GOOGLE_API_KEY=your_key
+GOOGLE_API_KEY=AQ.Ab8RN6KYS--CAJlqkh66gfDQXcOujN92lRXkVpxuRsgfpzpsIQ
 ```
 
 The app tries Gemini when a key is available. If it cannot call Gemini, it uses a clearly labeled local demo generator so the UI can still be tested.
