@@ -59,5 +59,5 @@ GOOGLE_API_KEY=AQ.Ab8RN6KYS--CAJlqkh66gfDQXcOujN92lRXkVpxuRsgfpzpsIQ
 
 The app tries Gemini when a key is available. If it cannot call Gemini, it uses a clearly labeled local demo generator so the UI can still be tested.
 
-## Notes
-This is an educational/demo fitness planner, not a medical or clinical system. Users should adapt activity to their abilities and seek professional guidance when appropriate.
+## Demo Video
+https://drive.google.com/file/d/14VsJYG8q9sNzQmzCCUqW9ZVaryoMSAk_/view?usp=sharing
